@@ -1,0 +1,41 @@
+body {
+  margin: 0;
+  background-color: #FAFAFA;
+}
+
+.nav {
+  background-color: #fff;
+  padding: 1em 0 0.7em 0;
+  border: 1px solid #DBDBDB;
+}
+
+.logo {
+  margin-left: 14em;
+}
+
+.search-input {
+  margin-left: 15em;
+  width: 15em;
+  background-color: #FAFAFA;
+  border: 1px solid #DBDBDB;
+  padding: 0.2em 1.5em;
+  border-radius: 0.2em;
+
+}
+
+.search-input::placeholder {
+  text-align: center;
+}
+
+.nav-links {
+  margin-left: 15em;
+}
+
+.nav-links i {
+  transform: scale(1.6);
+}
+
+.nav-links>a {
+  color: #000000;
+  margin: 1em;
+}
