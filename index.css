@@ -113,3 +113,47 @@ body {
 .item>img:hover {
   opacity: 0.7;
 }
+
+@media screen and (max-width: 425px) {
+  .nav {
+    padding: 2em 0 1.5em 0;
+  }
+
+  .logo {
+    margin-left: 4em;
+  }
+
+  .nav-links i {
+    transform: scale(2);
+  }
+
+  .gallery-nav {
+    display: none;
+  }
+
+  .profile-photo>img {
+    height: 20em;
+    width: 20em;
+  }
+  
+  .profile-info {
+    margin-top: 3em;
+    margin-left: 3em;
+  }
+  
+  .profile-info>p {
+    font-size: 2em;
+  }
+
+  .search-input {
+    display: none;
+  }
+  
+  .nav-links {
+    margin-left: 5em;
+  }
+  
+  .content {
+    margin: 0;
+  }
+}
