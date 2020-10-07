@@ -1,0 +1,42 @@
+.bio-info {
+  margin-top: 1em;
+}
+
+.bio-name {
+  font-size: 1.5em;
+}
+
+.bio-button {
+  background-color: #0095F6;
+  border: unset;
+  color: #ffffff;
+  padding: 0.2em 1.2em;
+}
+
+.bio-form {
+  display: none;
+  position: absolute;
+  left: 33em;
+  width: 25em;
+  height: 15em;
+  background-color: #fff;
+  box-shadow:  0 0 8px 0 #000000;
+}
+
+.bio-form>input {
+  width: 17em;
+  height: 3em;
+  margin-bottom: 1em;
+  margin-top: 1em;
+  margin-left: 3em;
+}
+
+.bio-form>button {
+  background-color: #0095F6;
+  border: unset;
+  color: #ffffff;
+  padding: 0.2em 1.2em;
+  margin-left: 3em;
+  height: 2.5em;
+  width: 7em;
+}

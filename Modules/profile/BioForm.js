@@ -1,9 +1,10 @@
 const bioForm = () => {
   return `
     <form class="bio-form">
-      <input type="text" class="bio-name-input" placeholder="name...">
-      <input type="text" class="bio-description" placeholder="description...">
+      <input type="text" class="bio-name-input" placeholder="name..." required/>
+      <input type="text" class="bio-description" placeholder="description..." required/>
       <button class="submit-button">SUBMIT</button>
+      <button class="cancel-button">CANCEL</button>
     </form>
   `
 }

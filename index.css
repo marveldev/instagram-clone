@@ -1,3 +1,5 @@
+@import './Modules/profile/BioForm.css';
+
 body {
   margin: 0;
   background-color: #FAFAFA;
@@ -60,21 +62,6 @@ body {
   width: 10em;
   border-radius: 50%;
   margin-left: 5em;
-}
-
-.bio-info {
-  margin-top: 1em;
-}
-
-.bio-name {
-  font-size: 1.5em;
-}
-
-.bio-button {
-  background-color: #0095F6;
-  border: unset;
-  color: #ffffff;
-  padding: 0.2em 1.2em;
 }
 
 .add-photo {
