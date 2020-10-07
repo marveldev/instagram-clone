@@ -9,6 +9,7 @@ body {
   background-color: #fff;
   padding: 1em 0 0.7em 0;
   border: 1px solid #DBDBDB;
+  z-index: 1;
 }
 
 .logo {
@@ -61,15 +62,15 @@ body {
   margin-left: 5em;
 }
 
-.profile-info {
+.bio-info {
   margin-top: 1em;
 }
 
-.profile-info>p {
+.bio-name {
   font-size: 1.5em;
 }
 
-.profile-info>button {
+.bio-button {
   background-color: #0095F6;
   border: unset;
   color: #ffffff;
@@ -141,7 +142,7 @@ body {
     margin-left: 3em;
   }
   
-  .profile-info>p {
+  .bio-name {
     font-size: 2em;
   }
 
