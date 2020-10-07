@@ -32,20 +32,32 @@ const addEntryToDb = (storeName, entry) => {
   }
 }
 
-const getEntryFromDb = (storeName, id) => {
-  const database = request.result
-  const transaction = database.transaction([storeName]);
-  const store = transaction.objectStore(storeName)
-  const getData = id ? store.get(id) : store.getAll();
+const getEntryFromDb = async (storeName, id) => {
+  const data = new Promise((resolve, reject) => {
+    const database = request.result
+    const transaction = database.transaction([storeName]);
+    const store = transaction.objectStore(storeName)
+    const getData = id ? store.get(id) : store.getAll();
+  
+    getData.onsuccess = () => {
+      resolve(getData.result)
+    }
+  
+    getData.onerror = () => {
+      console.log(`error adding to ${storeName}`)
+      reject(getData.error);
+    }
+  })
 
-  getData.onsuccess = () => {
-    console.log(getData.result)
-  }
+  return Promise.resolve(data);
+}
 
-  getData.onerror = () => {
-    console.log(`error adding to ${storeName}`)
-  }
+const clearAllEntries = (storeName) => {
+  const database = request.result;
+  const transaction = database.transaction([storeName], 'readwrite');
+  const store = transaction.objectStore(storeName);
+  store.clear();
 }
 
 
-export { request, addEntryToDb , getEntryFromDb};
+export { request, addEntryToDb , getEntryFromDb, clearAllEntries };

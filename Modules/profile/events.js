@@ -1,4 +1,4 @@
-import { addEntryToDb } from '../../dataStorage.js';
+import { addEntryToDb, clearAllEntries } from '../../dataStorage.js';
 
 const addBioEventListeners = () => {
   const bioForm = document.querySelector('.bio-form');
@@ -13,12 +13,18 @@ const addBioEventListeners = () => {
 
   bioForm.addEventListener('submit', () => {
     event.preventDefault();
-    const nameOutput = document.querySelector('.bio-name');
+    const bioNameOutput = document.querySelector('.bio-name');
+    const bioDescriptionOutput = document.querySelector('.bio-about');
     const bioName = document.querySelector('.bio-name-input').value;
     const bioDescription = document.querySelector('.bio-description').value;
-    nameOutput.innerText = bioName.value;
-  
+    
+    bioNameOutput.innerText = bioName;
+    bioDescriptionOutput.innerText = bioDescription;
+
+    clearAllEntries('bio');
     addEntryToDb('bio', { bioName, bioDescription })
+    
+    bioForm.style.display = 'none';
   })
 
   const closeEditBioModal = () => {
