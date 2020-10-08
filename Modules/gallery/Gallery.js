@@ -1,15 +1,4 @@
-import { getEntryFromDb } from "../../dataStorage.js";
-
-const gallery = async () => {
-  const galleryData = await getEntryFromDb('gallery');
-  const galleryItems = galleryData.map(singlePhoto => {
-    return `
-      <a href="#" class="item">
-        <img src="${singlePhoto}" alt="image">
-      </a>
-    `
-  })
-
+const gallery = () => {
   return `
     <div class="gallery-nav"></div>
     <input type="file" id="addPhoto">
@@ -17,8 +6,11 @@ const gallery = async () => {
       <i class="add-photo fa fa-plus-square"></i>
     </label>
     <section class="gallery">
-      ${galleryItems}
+      <div class="loader">
+        <img src="../../assets/loader.svg" alt="loading"/>
+      </div>
     </section>
   `
 }
+
 export default gallery;

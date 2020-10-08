@@ -1,4 +1,4 @@
-import { addEntryToDb  } from '../../dataStorage.js';
+import { addEntryToDb, getEntryFromDb  } from '../../dataStorage.js';
 
 const addGalleryEventListeners = () => {
   const photoInput = document.querySelector('#addPhoto');
@@ -12,4 +12,19 @@ const addGalleryEventListeners = () => {
   })
 }
 
-export default addGalleryEventListeners;
+const addImagesToGallery = async () => {
+  const gallerySection = document.querySelector('.gallery');
+  const galleryData = await getEntryFromDb('gallery');
+  const galleryItems = galleryData.map((singlePhoto) => {
+    return `
+      <a href="#" class="item">
+        <img src="${singlePhoto}" alt="image">
+      </a>
+    `
+  })
+  
+  gallerySection.style.display = 'grid';
+  gallerySection.innerHTML = galleryItems.join('');
+}
+
+export { addGalleryEventListeners, addImagesToGallery };

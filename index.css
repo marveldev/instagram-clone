@@ -59,7 +59,7 @@ body {
 }
 
 .gallery {
-  display: grid;
+  /* display: grid; */
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 2em 0em;
   margin: 4em 0 5em 0;
@@ -84,6 +84,10 @@ body {
 
 .item>img:hover {
   opacity: 0.7;
+}
+
+.loader {
+  text-align: center;
 }
 
 @media screen and (max-width: 425px) {

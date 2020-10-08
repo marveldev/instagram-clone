@@ -18,11 +18,11 @@ const addBioEventListeners = () => {
     const bioName = document.querySelector('.bio-name-input').value;
     const bioDescription = document.querySelector('.bio-description').value;
     
-    bioNameOutput.innerText = bioName;
-    bioDescriptionOutput.innerText = bioDescription;
-
     clearAllEntries('bio');
     addEntryToDb('bio', { bioName, bioDescription })
+
+    bioNameOutput.innerText = bioName;
+    bioDescriptionOutput.innerText = bioDescription;
     
     bioForm.style.display = 'none';
   })

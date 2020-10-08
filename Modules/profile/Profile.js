@@ -3,8 +3,6 @@ import { getEntryFromDb } from '../../dataStorage.js';
 
 const profile = async () => {
   const userInfo = await getEntryFromDb('bio');
-  console.log(userInfo);
-
   return `
     <section class="profile">
       <a href="#" class="profile-photo">
@@ -19,4 +17,5 @@ const profile = async () => {
     </section>
   `
 }
+
 export default profile;
