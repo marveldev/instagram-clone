@@ -35,4 +35,3 @@ const addBioEventListeners = () => {
 }
 
 export default addBioEventListeners;
-
