@@ -7,6 +7,13 @@ const addGalleryEventListeners = () => {
     reader.readAsDataURL(photoInput.files[0])
 
     reader.addEventListener('load', () => {
+      const gallerySection = document.querySelector('.gallery');
+      const galleryItems = `
+        <a href="#" class="item">
+          <img src="${reader.result}" alt="image">
+        </a>
+      `
+      gallerySection.innerHTML += galleryItems;
       addEntryToDb('gallery', reader.result);
     })
   })

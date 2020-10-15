@@ -52,6 +52,7 @@ const getEntryFromDb = async (storeName, id) => {
   return Promise.resolve(data);
 }
 
+
 const clearAllEntries = (storeName) => {
   const database = request.result;
   const transaction = database.transaction([storeName], 'readwrite');

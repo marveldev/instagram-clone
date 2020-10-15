@@ -7,7 +7,7 @@ import { addGalleryEventListeners, addImagesToGallery} from './Modules/gallery/e
 
 const app = async () => {
   return `
-    ${Nav}
+    ${Nav()}
     <section class="content">
       ${await Profile()}
       ${Gallery()}
