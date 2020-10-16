@@ -33,5 +33,4 @@ const addBioEventListeners = () => {
   
   cancelButton.addEventListener('click', closeEditBioModal);
 }
-
 export default addBioEventListeners;

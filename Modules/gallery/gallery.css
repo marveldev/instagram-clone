@@ -1,0 +1,42 @@
+.gallery {
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 2em 0em;
+  margin: 4em 0 5em 0;
+}
+
+.gallery-nav {
+  border-bottom: 1px solid #DBDBDB;
+}
+
+.item {
+  margin-left: 2em;
+  height: 20em;
+  width: 22em;
+  background: #000000;
+}
+
+.item>img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.item>img:hover {
+  opacity: 0.7;
+}
+
+.loader {
+  text-align: center;
+}
+
+.add-photo {
+  position: fixed;
+  top: 9em;
+  right: 1em;
+  font-size: 4em;
+  cursor: pointer;
+}
+
+#addPhoto {
+  display: none;
+}

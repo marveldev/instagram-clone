@@ -17,5 +17,4 @@ const profile = async () => {
     </section>
   `
 }
-
 export default profile;
