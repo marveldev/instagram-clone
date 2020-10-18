@@ -6,7 +6,7 @@ const profile = async () => {
   return `
     <section class="profile">
       <a href="#" class="profile-photo">
-        <img src="https://images.pexels.com/photos/4864565/pexels-photo-4864565.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="">
+        <img src="https://images.pexels.com/photos/4864565/pexels-photo-4864565.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="photo">
       </a>
       <div class="bio-info">
         <p class="bio-name">${userInfo[0] ? userInfo[0].bioName : ''}</p>

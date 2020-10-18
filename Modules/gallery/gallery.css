@@ -1,28 +1,46 @@
 .gallery {
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 2em 0em;
+  grid-gap: 2em 2em;
   margin: 4em 0 5em 0;
 }
 
-.gallery-nav {
-  border-bottom: 1px solid #DBDBDB;
-}
-
-.item {
-  margin-left: 2em;
-  height: 20em;
-  width: 22em;
+.photo-content {
   background: #000000;
+  height: 20em;
 }
 
 .item>img {
   object-fit: cover;
-  height: 100%;
+  height: 20em;
   width: 100%;
 }
 
 .item>img:hover {
   opacity: 0.7;
+}
+
+.about-photo {
+  position: relative;
+  bottom: 18em;
+  display: none;
+}
+
+#photoButton {
+  margin-left: 20em;
+  border: unset;
+  border-radius: 50%;
+  width: 1.8em;
+  height: 1.8em;
+  background-color: #0095F6;
+  color: #fff;
+  font-weight: 600;
+  transform: scale(1.3);
+}
+
+#aboutPhoto {
+  margin: 1.5em 0 0 1em;
+  font-weight: 600;
+  color: #fff;
 }
 
 .loader {
@@ -39,4 +57,160 @@
 
 #addPhoto {
   display: none;
+}
+
+#createPostOverlay {
+  display: none; 
+  position: fixed; 
+  top: 0;
+  left: 0;
+  z-index: 1; 
+  width: 100%; 
+  height: 100%; 
+  background-color: #7d7d7d77; 
+}
+
+.create-post-modal {
+  display: none;
+  position: fixed;
+  left: 30em;
+  top: 7em;
+  margin: auto;
+  width: 34em;
+  height: auto;
+  z-index: 1;
+  background-color: #fff;
+  border-radius: 0.5em;
+}
+
+#createPost {
+  text-align: center;
+  padding: 0.5em 0;
+  font-size: 1.5em;
+}
+
+#closePostButton {
+  position: relative;
+  left: 6.5em;
+  border: unset;
+  border-radius: 50%;
+  width: 1.8em;
+  height: 1.8em;
+  background-color: #FAFAFA;
+  font-weight: 550;
+}
+
+#previewEntry {
+  margin: 0 auto;
+  height: 15em;
+  width: 32em;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  border-top: 1px solid #DBDBDB; 
+}
+
+#userPostInput {
+  margin: 1em 0 2.5em 0.8em;
+  width: 95%;
+  height: auto;
+  resize: none;
+  border: none;
+  outline: none;
+  overflow: hidden;
+  font-size: 1.5em;
+}
+
+#userPostButton {
+  width: 90%;
+  background-color: #0095F6;
+  height: 3em;
+  border: unset;
+  color: #fff;
+  border-radius: 0.5em;
+  font-weight: 600;
+  margin: 0 2em 1.3em 2em;
+}
+
+#addPhoto {
+  display: none;
+}
+
+#userPhoto {
+  height: 25em;
+  margin-left: 1em;
+  width: 95%;
+  object-fit: cover;
+  border-radius: 0.5em;
+}
+
+.post-options {
+  padding: 0.5em 0;
+  border: 1px solid #DBDBDB;
+  border-radius: 0.5em;
+  margin: 1em 2em 1em 2em;
+}
+
+.post-options>span {
+  font-weight: 600;
+  margin-left: 1.5em;
+  line-height: 3em;
+}
+
+.post-options>a {
+  text-decoration: none;
+  color: #000; 
+  vertical-align: middle;
+}
+
+#userTagIcon {
+  margin-left: 0.5em;
+  font-size: 1.5em;
+}
+
+#smilyFaceIcon {
+  margin-left: 0.2em;
+  font-size: 2em;
+}
+
+#photoIcon {
+  margin-left: 4em;
+  font-size: 2em;
+  vertical-align: middle;
+  cursor: pointer;
+} 
+
+#previewImageButton {
+  position: relative;
+  left: 27em;
+  top: 3em;
+  border: unset;
+  border-radius: 50%;
+  width: 1.8em;
+  height: 1.8em;
+  background-color: #FAFAFA;
+  font-weight: 550;
+  transform: scale(1.3);
+}
+
+#previewEntry::-webkit-scrollbar {
+  width: 10px;
+}
+
+#previewEntry::-webkit-scrollbar-track {
+  background: #fff;
+}
+ 
+#previewEntry::-webkit-scrollbar-thumb {
+  background: #BCC0C4; 
+  border-radius: 0.5em;
+}
+
+.add-photo:active,
+.create-post-modal button:active,
+#photoIcon:active {
+  transform: translateY(4px);
+}
+
+.gallery-nav {
+  border-bottom: 1px solid #DBDBDB;
 }
