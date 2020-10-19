@@ -9,7 +9,6 @@ const galleryModal = () => {
         </div>
         <div id="previewEntry">
           <textarea id="userPostInput" placeholder="Image Description..."></textarea>
-          <button id="previewImageButton">X</button>
           <img src="https://images.pexels.com/photos/4864565/pexels-photo-4864565.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
             id="userPhoto" alt="photo">
         </div>
