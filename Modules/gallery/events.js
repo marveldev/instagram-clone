@@ -1,4 +1,4 @@
-import { addEntryToDb, getEntryFromDb  } from '../../dataStorage.js';
+import { addEntryToDb, getEntryFromDb, deleteEntry  } from '../../dataStorage.js';
 
 const addGalleryEventListeners = () => {
   const addPhotoIcon = document.querySelector('.add-photo');
@@ -40,27 +40,32 @@ const addGalleryEventListeners = () => {
   const userPostButton = document.querySelector('#userPostButton');
   userPostButton.addEventListener('click', () => {
     const gallerySection = document.querySelector('.gallery');
-    const userPostInput = document.querySelector('#userPostInput').value;
+    const photoText = document.querySelector('#photoText').value;
+    const itemId = 'id' + Math.random().toString(36).substring(7);
+
     let galleryItem = `
-      <div class="photo-content">
+      <div class="photo-content" id=${itemId}>
         <a href="#" class="item">
           <img src="${userPhoto.src}" alt="photo">
         </a>
         <div class="about-photo">
           <button id="photoButton">X</button>
-          <div id="aboutPhoto">${userPostInput}</div>
+          <div id="aboutPhoto">${photoText}</div>
         </div>
       </div>
     `
     galleryItem += gallerySection.innerHTML
     gallerySection.innerHTML = galleryItem;
 
-    const item = {
+    const addItemToIndexDb = {
+      galleryId: itemId,
       photoSource: userPhoto.src,
-      photoDescription: userPostInput
+      photoDescription: photoText
     } 
-    addEntryToDb('gallery', item);
+
+    addEntryToDb('gallery', addItemToIndexDb);
     togglePhotoContent();
+    deleteItem();
   })
 }
 
@@ -77,12 +82,25 @@ const togglePhotoContent = () => {
   }
 }
 
+const deleteItem = () => {
+  const deleteButtons = document.querySelectorAll('#photoButton')
+  const gallerySection = document.querySelector('.gallery');
+  for (let index = 0; index < deleteButtons.length; index++) {
+    const deleteButton = deleteButtons[index];
+    deleteButton.addEventListener('click', () => {
+      const parentItem = deleteButton.parentElement.parentElement;
+      gallerySection.removeChild(parentItem);
+      deleteEntry('gallery', parentItem.id);
+    })
+  }
+}
+
 const addImagesToGallery = async () => {
   const gallerySection = document.querySelector('.gallery');
   const galleryData = await getEntryFromDb('gallery');
   const galleryItems = galleryData.reverse().map((singlePhoto) => {
     return `
-      <div class="photo-content">
+      <div class="photo-content" id=${singlePhoto.galleryId}>
         <a href="#" class="item">
           <img src="${singlePhoto.photoSource}" alt="photo">
         </a>
@@ -97,6 +115,7 @@ const addImagesToGallery = async () => {
   gallerySection.style.display = 'grid';
   gallerySection.innerHTML = galleryItems.join('');
   togglePhotoContent();
+  deleteItem();
 }
 
 export { addGalleryEventListeners, addImagesToGallery };
