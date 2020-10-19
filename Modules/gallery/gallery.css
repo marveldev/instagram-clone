@@ -179,19 +179,6 @@
   cursor: pointer;
 } 
 
-#previewImageButton {
-  position: relative;
-  left: 27em;
-  top: 3em;
-  border: unset;
-  border-radius: 50%;
-  width: 1.8em;
-  height: 1.8em;
-  background-color: #FAFAFA;
-  font-weight: 550;
-  transform: scale(1.3);
-}
-
 #previewEntry::-webkit-scrollbar {
   width: 10px;
 }
