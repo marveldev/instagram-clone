@@ -1,4 +1,4 @@
-const request = indexedDB.open('instagram', 3);
+const request = indexedDB.open('instagram', 2);
 
 request.onsuccess = () => {
   const database = request.result;
@@ -10,7 +10,7 @@ request.onsuccess = () => {
 request.onupgradeneeded = () => {
   const database = request.result;
   database.createObjectStore('bio', { autoIncrement: true});
-  database.createObjectStore('gallery', { autoIncrement: true});
+  database.createObjectStore('gallery', { keyPath: 'galleryId' });
 }
 
 request.onerror = () => {
@@ -60,5 +60,12 @@ const clearAllEntries = (storeName) => {
   store.clear();
 }
 
+const deleteEntry = (storeName, entryId) => {
+  const database = request.result;
+  const transaction = database.transaction([storeName], 'readwrite');
+  const store = transaction.objectStore(storeName);
+  store.delete(entryId)
+}
 
-export { request, addEntryToDb , getEntryFromDb, clearAllEntries };
+
+export { request, addEntryToDb , getEntryFromDb, clearAllEntries, deleteEntry };
