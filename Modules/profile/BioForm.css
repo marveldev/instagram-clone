@@ -88,3 +88,21 @@
 .profile button:active {
   transform: translateY(3px);
 }
+
+#editPhotoButton {
+  display: none;
+  position: relative;
+  left: 6.6em;
+  bottom: 7.5em;
+  border: unset;
+  width: 9em;
+  height: 3em;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 0.5em;
+  background-color: #0095F6;
+}
+
+#editPhotoButton>i {
+  margin-right: 0.5em;
+}
