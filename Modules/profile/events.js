@@ -1,6 +1,17 @@
 import { addEntryToDb, clearAllEntries } from '../../dataStorage.js';
 
 const addBioEventListeners = () => {
+  const profilePhoto = document.querySelector('#profilePhoto');
+  const editPhotoButton = document.querySelector('#editPhotoButton');
+
+  profilePhoto.addEventListener('mouseover', () => {
+    editPhotoButton.style.display = 'block';
+  })
+
+  profilePhoto.addEventListener('mouseout', () => {
+    editPhotoButton.style.display = 'none';
+  })
+
   const bioForm = document.querySelector('.bio-form');
   const bioButton = document.querySelector('.bio-button');
   const cancelButton = document.querySelector('.cancel-button');
@@ -30,7 +41,10 @@ const addBioEventListeners = () => {
   const closeEditBioModal = () => {
     bioForm.style.display = 'none';
   }
-  
+
   cancelButton.addEventListener('click', closeEditBioModal);
 }
+
+
+
 export default addBioEventListeners;
