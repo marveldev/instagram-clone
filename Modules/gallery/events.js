@@ -40,7 +40,7 @@ const addGalleryEventListeners = () => {
   const userPostButton = document.querySelector('#userPostButton');
   userPostButton.addEventListener('click', () => {
     const gallerySection = document.querySelector('.gallery');
-    const photoText = document.querySelector('#photoText').value;
+    const photoText = document.querySelector('#userPostInput').value;
     const itemId = 'id' + Math.random().toString(36).substring(7);
 
     let galleryItem = `
