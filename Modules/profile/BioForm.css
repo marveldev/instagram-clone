@@ -30,12 +30,13 @@
 }
 
 #editPhotoButton {
-  /* display: none; */
+  display: none;
   position: relative;
   left: 1.8em;
   bottom: 7.5em;
   border: unset;
-  padding: 0.8em;
+  padding: 0.6em;
+  width: 9em;
   color: #fff;
   font-weight: 600;
   cursor: pointer;
