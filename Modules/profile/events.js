@@ -1,23 +1,31 @@
 import { addEntryToDb, clearAllEntries } from '../../dataStorage.js';
 
-const addBioEventListeners = () => {
+const addBioPhotoEventListeners = () => {
   const profilePhoto = document.querySelector('#profilePhoto');
   const editPhotoButton = document.querySelector('#editPhotoButton');
 
   profilePhoto.addEventListener('mouseover', () => {
-    // editPhotoButton.style.display = 'block';
+    editPhotoButton.style.display = 'block';
   })
 
   profilePhoto.addEventListener('mouseout', () => {
-    // editPhotoButton.style.display = 'none';
+    editPhotoButton.style.display = 'none';
   })
 
-  const profilePhotoButton = document.querySelector('#editPhotoButton');
-  profilePhotoButton.addEventListener('click', () => {
-    console.log('ok');
-
+  const photoInput = document.querySelector('#editBioPhoto');
+  const userPhoto = document.querySelector('#photo');
+  photoInput.addEventListener('change', () => {
+    const photoReader = new FileReader();
+    photoReader.readAsDataURL(photoInput.files[0])
+    photoReader.addEventListener('load', () => {
+      clearAllEntries('bioPhoto');
+      addEntryToDb('bioPhoto', photoReader.result)
+      userPhoto.src = photoReader.result;
+    })
   })
+}
 
+const addBioEventListeners = () => {
   const bioForm = document.querySelector('.bio-form');
   const bioButton = document.querySelector('.bio-button');
   const cancelButton = document.querySelector('.cancel-button');
@@ -50,4 +58,5 @@ const addBioEventListeners = () => {
 
   cancelButton.addEventListener('click', closeEditBioModal);
 }
-export default addBioEventListeners;
+
+export { addBioEventListeners, addBioPhotoEventListeners };
