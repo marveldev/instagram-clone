@@ -10,6 +10,7 @@ request.onsuccess = () => {
 request.onupgradeneeded = () => {
   const database = request.result;
   database.createObjectStore('bio', { autoIncrement: true});
+  database.createObjectStore('bioPhoto', { autoIncrement: true })
   database.createObjectStore('gallery', { keyPath: 'galleryId' });
 }
 
@@ -52,7 +53,6 @@ const getEntryFromDb = async (storeName, id) => {
   return Promise.resolve(data);
 }
 
-
 const clearAllEntries = (storeName) => {
   const database = request.result;
   const transaction = database.transaction([storeName], 'readwrite');
@@ -66,6 +66,5 @@ const deleteEntry = (storeName, entryId) => {
   const store = transaction.objectStore(storeName);
   store.delete(entryId)
 }
-
 
 export { request, addEntryToDb , getEntryFromDb, clearAllEntries, deleteEntry };
