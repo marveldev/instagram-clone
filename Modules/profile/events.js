@@ -5,11 +5,17 @@ const addBioEventListeners = () => {
   const editPhotoButton = document.querySelector('#editPhotoButton');
 
   profilePhoto.addEventListener('mouseover', () => {
-    editPhotoButton.style.display = 'block';
+    // editPhotoButton.style.display = 'block';
   })
 
   profilePhoto.addEventListener('mouseout', () => {
-    editPhotoButton.style.display = 'none';
+    // editPhotoButton.style.display = 'none';
+  })
+
+  const profilePhotoButton = document.querySelector('#editPhotoButton');
+  profilePhotoButton.addEventListener('click', () => {
+    console.log('ok');
+
   })
 
   const bioForm = document.querySelector('.bio-form');
@@ -44,7 +50,4 @@ const addBioEventListeners = () => {
 
   cancelButton.addEventListener('click', closeEditBioModal);
 }
-
-
-
 export default addBioEventListeners;

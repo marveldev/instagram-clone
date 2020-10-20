@@ -11,7 +11,44 @@
   height: 12em;
   width: 12em;
   border-radius: 50%;
+}
+
+#profilePhoto {
+  background: #000000;
+  height: 12em; 
+  width: 12em;
   margin: 1em 0 0 5em;
+  border-radius: 50%;
+}
+
+.profile-photo:hover {
+  opacity: 0.7;
+}
+
+#editBioPhoto {
+  display: none;
+}
+
+#editPhotoButton {
+  /* display: none; */
+  position: relative;
+  left: 1.8em;
+  bottom: 7.5em;
+  border: unset;
+  padding: 0.8em;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 0.5em;
+  background-color: #0095F6;
+}
+
+#editPhotoButton>i {
+  margin-right: 0.5em;
+}
+
+#editPhotoButton:active {
+  transform: translateY(4px);
 }
 
 .bio-info {
@@ -87,22 +124,4 @@
 
 .profile button:active {
   transform: translateY(3px);
-}
-
-#editPhotoButton {
-  display: none;
-  position: relative;
-  left: 6.6em;
-  bottom: 7.5em;
-  border: unset;
-  width: 9em;
-  height: 3em;
-  color: #fff;
-  font-weight: 600;
-  border-radius: 0.5em;
-  background-color: #0095F6;
-}
-
-#editPhotoButton>i {
-  margin-right: 0.5em;
 }
