@@ -3,11 +3,12 @@ import { getEntryFromDb } from '../../dataStorage.js';
 
 const profile = async () => {
   const userInfo = await getEntryFromDb('bio');
+  const userPhoto = await getEntryFromDb('bioPhoto');
   return `
     <section class="profile">
       <section id="profilePhoto">
         <a href="#" class="profile-photo">
-          <img src="https://images.pexels.com/photos/4864565/pexels-photo-4864565.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="photo">
+          <img src=${userPhoto} id="photo" alt="photo">
         </a>
         <input type="file" id="editBioPhoto">
         <label for="editBioPhoto" id="editPhotoButton">
