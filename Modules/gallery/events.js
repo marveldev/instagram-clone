@@ -21,6 +21,11 @@ const addGalleryEventListeners = () => {
 
   userPostOverlay.addEventListener('click', () => {
     toggleUserPostModal('none');
+    const editModals = document.querySelectorAll('.edit-text-modal')
+    for (let index = 0; index < editModals.length; index++) {
+      const editModal = editModals[index];
+      editModal.style.display = 'none';
+    }
   })
 
   closePostButton.addEventListener('click', () => {
@@ -59,8 +64,8 @@ const addGalleryEventListeners = () => {
           <strong>EDIT PHOTO DESCRIPTION</strong>
           <div id="editEntry">
             <textarea id="editPostInput" placeholder="Image Description..."></textarea>
-            <button id="confirmEditButton" class="button">OK</button>
-            <button id="cancelEditButton" class="button">CANCEL</button>
+            <button class="confirm-edit button">OK</button>
+            <button class="cancel-edit button">CANCEL</button>
           </div> 
         </div>
       </div>
@@ -95,15 +100,36 @@ const togglePhotoContent = () => {
 
 const editItemText = () => {
   const editButtons = document.querySelectorAll('.edit-text')
+  const userPostOverlay = document.querySelector('#createPostOverlay');
   for (let index = 0; index < editButtons.length; index++) {
     const editButton = editButtons[index];
     editButton.addEventListener('click', () => {
-      const editModal = editButton.parentElement.parentElement.nextElementSibling;;
-      const userPostOverlay = document.querySelector('#createPostOverlay');
+      const editModal = editButton.parentElement.parentElement.nextElementSibling;
       editModal.style.display = 'block';
       userPostOverlay.style.display = 'block';
+    })
+  }
 
-      
+  const confirmEditButtons = document.querySelectorAll('.confirm-edit');
+  for (let index = 0; index < confirmEditButtons.length; index++) {
+    const confirmEditButton = confirmEditButtons[index];
+    confirmEditButton.addEventListener('click', () => {
+      const textValue = document.querySelector('#editPostInput').value;
+      const aboutPhoto = document.querySelector('#aboutPhoto');
+      const parentElement = confirmEditButton.parentElement.parentElement;
+      aboutPhoto.innerHTML = textValue;
+      parentElement .style.display = 'none';
+      userPostOverlay.style.display = 'none';
+    })
+  }
+
+  const cancelButtons = document.querySelectorAll('.cancel-edit')
+  for (let index = 0; index < cancelButtons.length; index++) {
+    const cancelButton = cancelButtons[index];
+    cancelButton.addEventListener('click', () => {
+      const closeModal = cancelButton.parentElement.parentElement;
+      closeModal.style.display = 'none';
+      userPostOverlay.style.display = 'none';
     })
   }
 }
@@ -134,15 +160,15 @@ const addImagesToGallery = async () => {
           <div class="about-photo">
             <button class="edit-text button">EDIT</button>
             <button class="photo-button button">X</button>
-            <div id="aboutPhoto" contentEditable="true">${singlePhoto.photoDescription}</div>
+            <div id="aboutPhoto">${singlePhoto.photoDescription}</div>
           </div>
         </div>
         <div class="edit-text-modal">
           <strong>EDIT PHOTO DESCRIPTION</strong>
           <div id="editEntry">
             <textarea id="editPostInput" placeholder="Image Description..."></textarea>
-            <button id="confirmEditButton" class="button">OK</button>
-            <button id="cancelEditButton" class="button">CANCEL</button>
+            <button class="confirm-edit button">OK</button>
+            <button class="cancel-edit button">CANCEL</button>
           </div> 
         </div>
       </div>
