@@ -44,13 +44,24 @@ const addGalleryEventListeners = () => {
     const itemId = 'id' + Math.random().toString(36).substring(7);
 
     let galleryItem = `
-      <div class="photo-content" id=${itemId}>
-        <a href="#" class="item">
-          <img src="${userPhoto.src}" alt="photo">
-        </a>
-        <div class="about-photo">
-          <button id="photoButton">X</button>
-          <div id="aboutPhoto">${photoText}</div>
+      <div id=${itemId}>
+        <div class="photo-container">
+          <a href="#" class="item">
+            <img src="${userPhoto.src}" alt="photo">
+          </a>
+          <div class="about-photo">
+            <button class="edit-text button">EDIT</button>
+            <button class="photo-button button">X</button>
+            <div id="aboutPhoto">${photoText}</div>
+          </div>
+        </div>
+        <div class="edit-text-modal">
+          <strong>EDIT PHOTO DESCRIPTION</strong>
+          <div id="editEntry">
+            <textarea id="editPostInput" placeholder="Image Description..."></textarea>
+            <button id="confirmEditButton" class="button">OK</button>
+            <button id="cancelEditButton" class="button">CANCEL</button>
+          </div> 
         </div>
       </div>
     `
@@ -62,33 +73,48 @@ const addGalleryEventListeners = () => {
       photoSource: userPhoto.src,
       photoDescription: photoText
     } 
-
     addEntryToDb('gallery', addItemToIndexDb);
     togglePhotoContent();
+    editItemText();
     deleteItem();
   })
 }
 
 const togglePhotoContent = () => {
-  const photoContents = document.querySelectorAll('.photo-content');
+  const photoContents = document.querySelectorAll('.photo-container');
   for (let index = 0; index < photoContents.length; index++) {
     const singleItem = photoContents[index];
     singleItem.addEventListener('mouseover', () => {
-      singleItem.lastElementChild.style.display = 'block';
+     singleItem.lastElementChild.style.display = 'block'
     })
     singleItem.addEventListener('mouseout', () => {
-      singleItem.lastElementChild.style.display = 'none';
+      singleItem.lastElementChild.style.display = 'none'
+    })
+  }
+}
+
+const editItemText = () => {
+  const editButtons = document.querySelectorAll('.edit-text')
+  for (let index = 0; index < editButtons.length; index++) {
+    const editButton = editButtons[index];
+    editButton.addEventListener('click', () => {
+      const editModal = editButton.parentElement.parentElement.nextElementSibling;;
+      const userPostOverlay = document.querySelector('#createPostOverlay');
+      editModal.style.display = 'block';
+      userPostOverlay.style.display = 'block';
+
+      
     })
   }
 }
 
 const deleteItem = () => {
-  const deleteButtons = document.querySelectorAll('#photoButton')
+  const deleteButtons = document.querySelectorAll('.photo-button')
   const gallerySection = document.querySelector('.gallery');
   for (let index = 0; index < deleteButtons.length; index++) {
     const deleteButton = deleteButtons[index];
     deleteButton.addEventListener('click', () => {
-      const parentItem = deleteButton.parentElement.parentElement;
+      const parentItem = deleteButton.parentElement.parentElement.parentElement;
       gallerySection.removeChild(parentItem);
       deleteEntry('gallery', parentItem.id);
     })
@@ -98,24 +124,35 @@ const deleteItem = () => {
 const addImagesToGallery = async () => {
   const gallerySection = document.querySelector('.gallery');
   const galleryData = await getEntryFromDb('gallery');
-  const galleryItems = galleryData.reverse().map((singlePhoto) => {
+  let galleryItems = galleryData.map((singlePhoto) => {
     return `
-      <div class="photo-content" id=${singlePhoto.galleryId}>
-        <a href="#" class="item">
-          <img src="${singlePhoto.photoSource}" alt="photo">
-        </a>
-        <div class="about-photo">
-          <button id="photoButton">X</button>
-          <div id="aboutPhoto">${singlePhoto.photoDescription}</div>
+      <div id=${singlePhoto.galleryId}>
+        <div class="photo-container">
+          <a href="#" class="item">
+            <img src="${singlePhoto.photoSource}" alt="photo">
+          </a>
+          <div class="about-photo">
+            <button class="edit-text button">EDIT</button>
+            <button class="photo-button button">X</button>
+            <div id="aboutPhoto" contentEditable="true">${singlePhoto.photoDescription}</div>
+          </div>
+        </div>
+        <div class="edit-text-modal">
+          <strong>EDIT PHOTO DESCRIPTION</strong>
+          <div id="editEntry">
+            <textarea id="editPostInput" placeholder="Image Description..."></textarea>
+            <button id="confirmEditButton" class="button">OK</button>
+            <button id="cancelEditButton" class="button">CANCEL</button>
+          </div> 
         </div>
       </div>
     `
   })
-
   gallerySection.style.display = 'grid';
   gallerySection.innerHTML = galleryItems.join('');
   togglePhotoContent();
   deleteItem();
+  editItemText();
 }
 
 export { addGalleryEventListeners, addImagesToGallery };

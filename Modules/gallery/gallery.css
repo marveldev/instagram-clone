@@ -4,7 +4,7 @@
   margin: 4em 0 5em 0;
 }
 
-.photo-content {
+.photo-container {
   background: #000000;
   height: 20em;
 }
@@ -25,15 +25,36 @@
   display: none;
 }
 
-#photoButton {
-  margin-left: 20em;
+.button {
   border: unset;
+  font-weight: 600;
+  background-color: #0095F6;
+  color: #fff;
+}
+
+.edit-text {
+  padding: 0.4em 1.2em;
+  margin-left: 1em;
+  border-radius: 0.5em;
+}
+
+#editPostInput {
+  margin: 1em 0 2.5em 0.8em;
+  width: 95%;
+  height: auto;
+  resize: none;
+  border: none;
+  outline: none;
+  overflow: hidden;
+  font-size: 1.5em;
+}
+
+.photo-button {
+  margin-left: 14em;
   border-radius: 50%;
   width: 1.8em;
   height: 1.8em;
-  background-color: #0095F6;
   color: #fff;
-  font-weight: 600;
   transform: scale(1.3);
 }
 
@@ -41,6 +62,41 @@
   margin: 1.5em 0 0 1em;
   font-weight: 600;
   color: #fff;
+}
+
+.edit-text-modal {
+  display: none;
+  position: fixed;
+  top: 15em;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 30em;
+  border-radius: 0.5em;
+  padding: 1.5em 0;
+  background-color: #fff;
+}
+
+.edit-text-modal>strong {
+  font-size: 1.3em;
+  margin-left: 5em;
+}
+
+#editEntry {
+  border-top: 1px solid #DBDBDB;
+  margin: 1em 0 0 0;
+}
+
+#confirmEditButton {
+  padding: 0.4em 1.2em;
+  margin-left: 1em;
+  border-radius: 0.5em;
+}
+
+#cancelEditButton {
+  padding: 0.4em 1.2em;
+  margin-left: 17em;
+  border-radius: 0.5em;
 }
 
 .loader {
@@ -122,12 +178,8 @@
 
 #userPostButton {
   width: 90%;
-  background-color: #0095F6;
   height: 3em;
-  border: unset;
-  color: #fff;
   border-radius: 0.5em;
-  font-weight: 600;
   margin: 0 2em 1.3em 2em;
 }
 
@@ -193,8 +245,9 @@
 }
 
 .add-photo:active,
-.create-post-modal button:active,
-#photoIcon:active {
+#closePostButton:active,
+#photoIcon:active,
+.button:active {
   transform: translateY(4px);
 }
 

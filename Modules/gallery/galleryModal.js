@@ -21,7 +21,7 @@ const galleryModal = () => {
           <a href="#"><i class='fas fa-user-tag' id="userTagIcon"></i></a>
           <a href="#"><i class="material-icons" id="smilyFaceIcon">&#xe420;</i></a>
         </div>
-        <button id="userPostButton">POST</button>
+        <button id="userPostButton" class="button">POST</button>
       </div>
     </section>
   `
