@@ -1,4 +1,4 @@
-import { addEntryToDb, getEntryFromDb, deleteEntry  } from '../../dataStorage.js';
+import { addEntryToDb, getEntryFromDb, deleteEntry, updateEntry  } from '../../dataStorage.js';
 
 const addGalleryEventListeners = () => {
   const addPhotoIcon = document.querySelector('.add-photo');
@@ -60,14 +60,14 @@ const addGalleryEventListeners = () => {
           <div class="about-photo">
             <button class="edit-text button" title=${modalId}>EDIT</button>
             <button class="photo-button button" title=${itemId}>X</button>
-            <div class=${modalId} id="aboutPhoto">${photoText}</div>
+            <div class=${itemId} id="aboutPhoto">${photoText}</div>
           </div>
         </div>
         <div class="edit-text-modal" id=${modalId}>
           <strong>EDIT PHOTO DESCRIPTION</strong>
           <div id="editEntry">
             <textarea id="editPostInput" placeholder="Image Description..."></textarea>
-            <button class="confirm-edit button" title=${modalId}>OK</button>
+            <button class="confirm-edit button" title=${itemId}>OK</button>
             <button class="cancel-edit button">CANCEL</button>
           </div> 
         </div>
@@ -82,6 +82,7 @@ const addGalleryEventListeners = () => {
       photoSource: userPhoto.src,
       photoText: photoText
     } 
+
     addEntryToDb('gallery', addItemToIndexDb);
     togglePhotoContent();
     editItemText();
@@ -108,7 +109,8 @@ const editItemText = () => {
   for (let index = 0; index < editButtons.length; index++) {
     const editButton = editButtons[index];
     editButton.addEventListener('click', () => {
-      const editModal = editButton.parentElement.parentElement.nextElementSibling;
+      const modalId = editButton.title;
+      const editModal = document.querySelector(`#${modalId}`);
       editModal.style.display = 'block';
       userPostOverlay.style.display = 'block';
     })
@@ -118,13 +120,18 @@ const editItemText = () => {
   for (let index = 0; index < confirmEditButtons.length; index++) {
     const confirmEditButton = confirmEditButtons[index];
     confirmEditButton.addEventListener('click', () => {
-      const textValue = confirmEditButton.previousElementSibling;
-      const modal = confirmEditButton.parentElement.parentElement
-      const parentElement = confirmEditButton.parentElement.parentElement.parentElement;
-      const aboutPhoto = document.querySelector(`#${parentElement.className}`);
-      aboutPhoto.innerHTML = textValue.value;
-      modal.style.display = 'none';
+      const text = confirmEditButton.previousElementSibling;
+      const editModal = confirmEditButton.parentElement.parentElement;
+      const elementClass = confirmEditButton.title;
+      const aboutPhoto = document.querySelector(`.${elementClass}`);
+      const galleryItem = document.querySelector(`#${elementClass}`);
+      aboutPhoto.innerHTML = text.value;
+      const newEntry = aboutPhoto.innerHTML;
+      editModal.style.display = 'none';
       userPostOverlay.style.display = 'none';
+
+      updateEntry('gallery', galleryItem.id, newEntry)
+
     })
   }
 
@@ -132,8 +139,8 @@ const editItemText = () => {
   for (let index = 0; index < cancelButtons.length; index++) {
     const cancelButton = cancelButtons[index];
     cancelButton.addEventListener('click', () => {
-      const closeModal = cancelButton.parentElement.parentElement;
-      closeModal.style.display = 'none';
+      const editModal = cancelButton.parentElement.parentElement;
+      editModal.style.display = 'none';
       userPostOverlay.style.display = 'none';
     })
   }
@@ -145,9 +152,11 @@ const deleteItem = () => {
   for (let index = 0; index < deleteButtons.length; index++) {
     const deleteButton = deleteButtons[index];
     deleteButton.addEventListener('click', () => {
-      const parentItem = deleteButton.parentElement.parentElement.parentElement;
-      gallerySection.removeChild(parentItem);
-      deleteEntry('gallery', parentItem.id);
+      const galleryId = deleteButton.title;
+      const galleryItem = document.querySelector(`#${galleryId}`);
+      gallerySection.removeChild(galleryItem);
+
+      deleteEntry('gallery', galleryId);
     })
   }
 }
@@ -155,7 +164,7 @@ const deleteItem = () => {
 const addImagesToGallery = async () => {
   const gallerySection = document.querySelector('.gallery');
   const galleryData = await getEntryFromDb('gallery');
-  let galleryItems = galleryData.map((singlePhoto) => {
+  let galleryItems = galleryData.reverse().map((singlePhoto) => {
     return `
       <div id=${singlePhoto.galleryId}>
         <div class="photo-container">
@@ -165,14 +174,14 @@ const addImagesToGallery = async () => {
           <div class="about-photo">
             <button class="edit-text button" title=${singlePhoto.modalId}>EDIT</button>
             <button class="photo-button button" title=${singlePhoto.galleryId}>X</button>
-            <div class=${singlePhoto.modalId} id="aboutPhoto">${singlePhoto.photoText}</div>
+            <div class=${singlePhoto.galleryId} id="aboutPhoto">${singlePhoto.photoText}</div>
           </div>
         </div>
         <div class="edit-text-modal" id=${singlePhoto.modalId}>
           <strong>EDIT PHOTO DESCRIPTION</strong>
           <div id="editEntry">
             <textarea id="editPostInput" placeholder="Image Description..."></textarea>
-            <button class="confirm-edit button" title=${singlePhoto.modalId}>OK</button>
+            <button class="confirm-edit button" title=${singlePhoto.galleryId}>OK</button>
             <button class="cancel-edit button">CANCEL</button>
           </div> 
         </div>
@@ -182,8 +191,8 @@ const addImagesToGallery = async () => {
   gallerySection.style.display = 'grid';
   gallerySection.innerHTML = galleryItems.join('');
   togglePhotoContent();
-  deleteItem();
   editItemText();
+  deleteItem();
 }
 
 export { addGalleryEventListeners, addImagesToGallery };

@@ -53,6 +53,23 @@ const getEntryFromDb = async (storeName, id) => {
   return Promise.resolve(data);
 }
 
+const updateEntry = (storeName, itemId, newPhotoText) => {
+  const database = request.result;
+  const transaction = database.transaction([storeName], 'readwrite');
+  const store = transaction.objectStore(storeName);
+  const getData = store.get(itemId);
+  
+  getData.onsuccess = () => {
+    const data = getData.result;
+    data.photoText = newPhotoText;
+    store.put(data);
+  }
+
+  getData.onerror = () => {
+    console.log('error accessing getdata');
+  }
+}
+
 const clearAllEntries = (storeName) => {
   const database = request.result;
   const transaction = database.transaction([storeName], 'readwrite');
@@ -67,4 +84,4 @@ const deleteEntry = (storeName, entryId) => {
   store.delete(entryId)
 }
 
-export { request, addEntryToDb , getEntryFromDb, clearAllEntries, deleteEntry };
+export { request, addEntryToDb , getEntryFromDb, clearAllEntries, deleteEntry, updateEntry };
