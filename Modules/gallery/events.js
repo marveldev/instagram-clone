@@ -114,11 +114,12 @@ const editItemText = () => {
   for (let index = 0; index < confirmEditButtons.length; index++) {
     const confirmEditButton = confirmEditButtons[index];
     confirmEditButton.addEventListener('click', () => {
-      const textValue = document.querySelector('#editPostInput').value;
-      const aboutPhoto = document.querySelector('#aboutPhoto');
-      const parentElement = confirmEditButton.parentElement.parentElement;
-      aboutPhoto.innerHTML = textValue;
-      parentElement .style.display = 'none';
+      const textValue = confirmEditButton.previousElementSibling;
+      const modal = confirmEditButton.parentElement.parentElement
+      const parentElement = confirmEditButton.parentElement.parentElement.parentElement;
+      const aboutPhoto = document.querySelector(`#${parentElement.className}`);
+      aboutPhoto.innerHTML = textValue.value;
+      modal.style.display = 'none';
       userPostOverlay.style.display = 'none';
     })
   }
@@ -152,7 +153,7 @@ const addImagesToGallery = async () => {
   const galleryData = await getEntryFromDb('gallery');
   let galleryItems = galleryData.map((singlePhoto) => {
     return `
-      <div id=${singlePhoto.galleryId}>
+      <div class=${singlePhoto.galleryId}>
         <div class="photo-container">
           <a href="#" class="item">
             <img src="${singlePhoto.photoSource}" alt="photo">
@@ -160,7 +161,7 @@ const addImagesToGallery = async () => {
           <div class="about-photo">
             <button class="edit-text button">EDIT</button>
             <button class="photo-button button">X</button>
-            <div id="aboutPhoto">${singlePhoto.photoDescription}</div>
+            <div class="photo-text" id=${singlePhoto.galleryId}>${singlePhoto.photoDescription}</div>
           </div>
         </div>
         <div class="edit-text-modal">
