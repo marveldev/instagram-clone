@@ -47,6 +47,9 @@ const addGalleryEventListeners = () => {
     const gallerySection = document.querySelector('.gallery');
     const photoText = document.querySelector('#userPostInput').value;
     const itemId = 'id' + Math.random().toString(36).substring(7);
+    const modalId = 'id' + Math.random().toString(36).substring(7);
+    console.log(itemId);
+    console.log(modalId);
 
     let galleryItem = `
       <div id=${itemId}>
@@ -55,16 +58,16 @@ const addGalleryEventListeners = () => {
             <img src="${userPhoto.src}" alt="photo">
           </a>
           <div class="about-photo">
-            <button class="edit-text button">EDIT</button>
-            <button class="photo-button button">X</button>
-            <div id="aboutPhoto">${photoText}</div>
+            <button class="edit-text button" title=${modalId}>EDIT</button>
+            <button class="photo-button button" title=${itemId}>X</button>
+            <div class=${modalId} id="aboutPhoto">${photoText}</div>
           </div>
         </div>
-        <div class="edit-text-modal">
+        <div class="edit-text-modal" id=${modalId}>
           <strong>EDIT PHOTO DESCRIPTION</strong>
           <div id="editEntry">
             <textarea id="editPostInput" placeholder="Image Description..."></textarea>
-            <button class="confirm-edit button">OK</button>
+            <button class="confirm-edit button" title=${modalId}>OK</button>
             <button class="cancel-edit button">CANCEL</button>
           </div> 
         </div>
@@ -75,8 +78,9 @@ const addGalleryEventListeners = () => {
 
     const addItemToIndexDb = {
       galleryId: itemId,
+      modalId: modalId,
       photoSource: userPhoto.src,
-      photoDescription: photoText
+      photoText: photoText
     } 
     addEntryToDb('gallery', addItemToIndexDb);
     togglePhotoContent();
@@ -153,22 +157,22 @@ const addImagesToGallery = async () => {
   const galleryData = await getEntryFromDb('gallery');
   let galleryItems = galleryData.map((singlePhoto) => {
     return `
-      <div class=${singlePhoto.galleryId}>
+      <div id=${singlePhoto.galleryId}>
         <div class="photo-container">
           <a href="#" class="item">
             <img src="${singlePhoto.photoSource}" alt="photo">
           </a>
           <div class="about-photo">
-            <button class="edit-text button">EDIT</button>
-            <button class="photo-button button">X</button>
-            <div class="photo-text" id=${singlePhoto.galleryId}>${singlePhoto.photoDescription}</div>
+            <button class="edit-text button" title=${singlePhoto.modalId}>EDIT</button>
+            <button class="photo-button button" title=${singlePhoto.galleryId}>X</button>
+            <div class=${singlePhoto.modalId} id="aboutPhoto">${singlePhoto.photoText}</div>
           </div>
         </div>
-        <div class="edit-text-modal">
+        <div class="edit-text-modal" id=${singlePhoto.modalId}>
           <strong>EDIT PHOTO DESCRIPTION</strong>
           <div id="editEntry">
             <textarea id="editPostInput" placeholder="Image Description..."></textarea>
-            <button class="confirm-edit button">OK</button>
+            <button class="confirm-edit button" title=${singlePhoto.modalId}>OK</button>
             <button class="cancel-edit button">CANCEL</button>
           </div> 
         </div>
