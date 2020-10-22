@@ -1,5 +1,6 @@
 const request = indexedDB.open('instagram', 2);
 
+
 request.onsuccess = () => {
   const database = request.result;
   const transaction = database.transaction(['bio'], 'readwrite')
@@ -25,7 +26,8 @@ const addEntryToDb = (storeName, entry) => {
   store.add(entry);
 
   transaction.oncomplete = () => {
-    alert (`entry added sucessfully to ${storeName}`)
+    const message = document.querySelector('#message');
+    message.style.display = 'block';
   }
 
   transaction.onerror = () => {
@@ -63,6 +65,8 @@ const updateEntry = (storeName, itemId, newPhotoText) => {
     const data = getData.result;
     data.photoText = newPhotoText;
     store.put(data);
+    const message = document.querySelector('#message');
+    message.style.display = 'block';
   }
 
   getData.onerror = () => {

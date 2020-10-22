@@ -3,13 +3,42 @@ body {
   background-color: #FAFAFA;
 }
 
+#message {
+  display: none;
+  position: fixed;
+  top: -2em;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: 6em;
+  width: 25em;
+  padding: 1em;
+  text-align: center;
+  background-color: #9fc09f;
+  transition-duration: 15s;
+  transform: translateY(2em);
+  z-index: 1;
+}
+
+#message>strong {
+  font-size: 1.2em;
+  display: block;
+}
+
+.message-btn {
+  width: 4em;
+  margin: 0.5em 0 0 15em;
+  height: 2em;
+}
+
 .nav {
   position: fixed;
+  top: 0;
   width: 100%;
   background-color: #fff;
   padding: 1em 0 0.7em 0;
   border: 1px solid #DBDBDB;
-  z-index: 1;
+  /* z-index: 1; */
 }
 
 .logo {

@@ -48,8 +48,6 @@ const addGalleryEventListeners = () => {
     const photoText = document.querySelector('#userPostInput').value;
     const itemId = 'id' + Math.random().toString(36).substring(7);
     const modalId = 'id' + Math.random().toString(36).substring(7);
-    console.log(itemId);
-    console.log(modalId);
 
     let galleryItem = `
       <div id=${itemId}>
@@ -131,7 +129,6 @@ const editItemText = () => {
       userPostOverlay.style.display = 'none';
 
       updateEntry('gallery', galleryItem.id, newEntry)
-
     })
   }
 

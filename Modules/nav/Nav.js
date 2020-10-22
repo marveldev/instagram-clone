@@ -1,4 +1,8 @@
 const Nav = () => `
+  <div id="message">
+    <strong>ENTRY ADDED SUCCESSFULLY</strong>
+    <button class="message-btn button">OK</button>
+  </div>
   <nav class="nav">
     <span class="logo">
       <img src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png" alt="logo">
