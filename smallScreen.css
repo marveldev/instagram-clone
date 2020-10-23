@@ -1,0 +1,128 @@
+@media screen and (max-width: 1024px) {
+  
+}
+
+@media screen and (max-width: 425px) {
+  .nav {
+    height: 8em;
+    padding: 3em 0 0.7em 0;
+  }
+
+  .logo {
+    margin-left: 7em;
+  }
+
+  .logo>img {
+    transform: scale(2);
+  }
+
+  .search-input {
+   display: none;
+  }
+
+  .nav-links i {
+    transform: scale(3);
+    margin-left: 3.5em;
+  }
+
+  .profile {
+    margin-top: 4em;
+  }
+
+  .profile-photo>img {
+    height: 15em;
+    width: 15em;
+  }
+  
+  #profilePhoto {
+    height: 15em; 
+    width: 15em;
+  }
+  
+  .bio-info {
+    margin: 1em 0 0 2em;
+    font-size: 2em;
+  }
+  
+  .content {
+    margin: 0em;
+  }
+
+  #editPhotoButton {
+    position: relative;
+    left: 2.5em;
+    bottom: 9em;
+    padding: 0.9em;
+    width: 10em;
+  }
+
+  .bio-form {
+    left: 27em;
+  }
+
+  .gallery-nav {
+    display: none;
+  }
+  
+  .gallery {
+    grid-template-columns: 1fr;
+    grid-gap: 1em 0;
+    width: 60em;
+  }
+
+  .photo-container {
+    height: 50em;
+  }
+
+  .item>img {
+    object-fit: cover;
+    height: 50em;
+  }
+
+  .edit-text {
+    font-size: 1.5em;
+  }
+  
+  .delete-photoBtn {
+    margin-left: 17em;
+    font-size: 1.5em;
+  } 
+
+  #aboutPhoto {
+    font-size: 2em;
+  }
+
+  .about-photo {
+    position: relative;
+    bottom: 30em;
+    font-size: 1.5em;
+  }
+
+  #userPostButton {
+    font-size: 1.2em;
+    margin: 0 2em 1.3em 1.3em;
+  }
+
+  .add-photo {
+    top: 17em;
+    transform: scale(2);
+    z-index: 1;
+  }
+
+  .post-options {
+    font-size: 1.2em;
+  }
+
+  #photoIcon {
+    margin-left: 2em;
+  } 
+
+  .edit-text-modal {
+    font-size: 1.5em;
+  }
+
+  .create-post-modal {
+    left: 3.5em;
+    font-size: 1.5em;
+  }
+}
