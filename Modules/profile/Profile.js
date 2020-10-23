@@ -8,7 +8,7 @@ const profile = async () => {
     <section class="profile">
       <section id="profilePhoto">
         <a href="#" class="profile-photo">
-          <img src=${userPhoto} id="photo" alt="photo">
+          <img src=${userPhoto[0] ? userPhoto[0] : '../../assets/photo.jpg'} id="photo" alt="photo">
         </a>
         <input type="file" id="editBioPhoto">
         <label for="editBioPhoto" id="editPhotoButton">
