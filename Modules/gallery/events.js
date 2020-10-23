@@ -57,7 +57,7 @@ const addGalleryEventListeners = () => {
           </a>
           <div class="about-photo">
             <button class="edit-text button" title=${modalId}>EDIT</button>
-            <button class="photo-button button" title=${itemId}>X</button>
+            <button class="delete-photoBtn button" title=${itemId}>X</button>
             <div class=${itemId} id="aboutPhoto">${photoText}</div>
           </div>
         </div>
@@ -74,6 +74,10 @@ const addGalleryEventListeners = () => {
     galleryItem += gallerySection.innerHTML
     gallerySection.innerHTML = galleryItem;
 
+    togglePhotoContent();
+    editItemText();
+    deleteItem();
+
     const addItemToIndexDb = {
       galleryId: itemId,
       modalId: modalId,
@@ -82,9 +86,6 @@ const addGalleryEventListeners = () => {
     } 
 
     addEntryToDb('gallery', addItemToIndexDb);
-    togglePhotoContent();
-    editItemText();
-    deleteItem();
   })
 }
 
@@ -144,7 +145,7 @@ const editItemText = () => {
 }
 
 const deleteItem = () => {
-  const deleteButtons = document.querySelectorAll('.photo-button')
+  const deleteButtons = document.querySelectorAll('.delete-photoBtn')
   const gallerySection = document.querySelector('.gallery');
   for (let index = 0; index < deleteButtons.length; index++) {
     const deleteButton = deleteButtons[index];
@@ -161,7 +162,7 @@ const deleteItem = () => {
 const addImagesToGallery = async () => {
   const gallerySection = document.querySelector('.gallery');
   const galleryData = await getEntryFromDb('gallery');
-  let galleryItems = galleryData.reverse().map((singlePhoto) => {
+  const galleryItems = galleryData.reverse().map((singlePhoto) => {
     return `
       <div id=${singlePhoto.galleryId}>
         <div class="photo-container">
@@ -170,7 +171,7 @@ const addImagesToGallery = async () => {
           </a>
           <div class="about-photo">
             <button class="edit-text button" title=${singlePhoto.modalId}>EDIT</button>
-            <button class="photo-button button" title=${singlePhoto.galleryId}>X</button>
+            <button class="delete-photoBtn button" title=${singlePhoto.galleryId}>X</button>
             <div class=${singlePhoto.galleryId} id="aboutPhoto">${singlePhoto.photoText}</div>
           </div>
         </div>
