@@ -28,6 +28,10 @@ const addEntryToDb = (storeName, entry) => {
   transaction.oncomplete = () => {
     const message = document.querySelector('#message');
     message.style.display = 'block';
+
+    setTimeout(function() {
+      message.style.display = 'none';
+    }, 4000);
   }
 
   transaction.onerror = () => {
@@ -65,8 +69,6 @@ const updateEntry = (storeName, itemId, newPhotoText) => {
     const data = getData.result;
     data.photoText = newPhotoText;
     store.put(data);
-    const message = document.querySelector('#message');
-    message.style.display = 'block';
   }
 
   getData.onerror = () => {
