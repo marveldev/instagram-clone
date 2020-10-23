@@ -93,10 +93,11 @@ const togglePhotoContent = () => {
   const photoContents = document.querySelectorAll('.photo-container');
   for (let index = 0; index < photoContents.length; index++) {
     const singleItem = photoContents[index];
-    singleItem.addEventListener('mouseover', () => {
+    singleItem.addEventListener('click', () => {
+      event.preventDefault();
      singleItem.lastElementChild.style.display = 'block'
     })
-    singleItem.addEventListener('mouseout', () => {
+    singleItem.addEventListener('mouseleave', () => {
       singleItem.lastElementChild.style.display = 'none'
     })
   }
