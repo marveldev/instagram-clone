@@ -3,17 +3,21 @@
 }
 
 @media screen and (max-width: 425px) {
+  #root {
+    width: 80em;
+  }
+
   .nav {
-    height: 8em;
-    padding: 3em 0 0.7em 0;
+    height: 10em;
+    padding: 5em 0 0.7em 0;
   }
 
   .logo {
-    margin-left: 7em;
+    margin-left: 10em;
   }
 
   .logo>img {
-    transform: scale(2);
+    transform: scale(3);
   }
 
   .search-input {
@@ -21,39 +25,32 @@
   }
 
   .nav-links i {
-    transform: scale(3);
-    margin-left: 3.5em;
+    transform: scale(4);
+    margin-left: 5em;
   }
 
   .profile {
-    margin-top: 4em;
+    margin-top: 6em;
+    width: 80em;
   }
 
   .profile-photo>img {
-    height: 15em;
-    width: 15em;
+    height: 25em;
+    width: 25em;
   }
   
   #profilePhoto {
-    height: 15em; 
-    width: 15em;
+    height: 25em; 
+    width: 25em;
   }
   
   .bio-info {
     margin: 1em 0 0 2em;
-    font-size: 2em;
+    font-size: 3em;
   }
   
   .content {
     margin: 0em;
-  }
-
-  #editPhotoButton {
-    position: relative;
-    left: 2.5em;
-    bottom: 9em;
-    padding: 0.9em;
-    width: 10em;
   }
 
   .bio-form {
@@ -66,17 +63,16 @@
   
   .gallery {
     grid-template-columns: 1fr;
-    grid-gap: 1em 0;
-    width: 60em;
+    grid-gap: 2.5em 0;
+    margin-top: 15em;
   }
 
   .photo-container {
-    height: 50em;
+    height: 80em;
   }
 
   .item>img {
-    object-fit: cover;
-    height: 50em;
+    height: 80em;
   }
 
   .edit-text {
@@ -94,8 +90,8 @@
 
   .about-photo {
     position: relative;
-    bottom: 30em;
-    font-size: 1.5em;
+    bottom: 35em;
+    font-size: 2em;
   }
 
   #userPostButton {
@@ -104,8 +100,9 @@
   }
 
   .add-photo {
-    top: 17em;
-    transform: scale(2);
+    top: 3em;
+    right: 0.5em;
+    font-size: 10em;
     z-index: 1;
   }
 
@@ -118,17 +115,22 @@
   } 
 
   .edit-text-modal {
-    font-size: 1.5em;
+    font-size: 2em;
   }
 
   .create-post-modal {
-    left: 3.5em;
-    font-size: 1.5em;
+    left: 3em;
+    top: 14em;
+    font-size: 2em;
   }
 
   .bio-form {
     top: 10em;
     left: 10em;
     font-size: 1.5em;
+  }
+
+  #editPhotoButton {
+    font-size: 2em;
   }
 }
