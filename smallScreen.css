@@ -3,138 +3,127 @@
 }
 
 @media screen and (max-width: 425px) {
-  #root {
-    width: 80em;
-  }
-
-  .nav {
-    height: 15em;
-    padding: 8em 0 0.7em 0;
+  body {
+    font-size: 5em;
+    width: 100em;
+    overflow-x: hidden;
   }
 
   .logo {
-    margin-left: 10em;
-  }
-
-  .logo>img {
-    transform: scale(3);
-  }
-
-  .search-input {
-   display: none;
-  }
-
-  .nav-links i {
-    transform: scale(4);
     margin-left: 5em;
   }
 
+  .logo>img {
+    transform: scale(5);
+  }
+
+  .search-input {
+    display: none;
+  }
+
+  .nav-links {
+    margin-left: 5em;
+  }
+
+   .nav-links i {
+    transform: scale(2);
+    margin: 0 1em;
+  }
+
+  .nav {
+    height: 7em;
+    padding: 3.5em 0 0.7em 0;
+  }
+
+  .content {
+    margin: 0em;
+    width: 35em;
+  }
+
   .profile {
-    margin-top: 12em;
-    width: 80em;
+    margin-top: 2em;
+    margin-left: 0;
   }
 
   .profile-photo>img {
-    height: 35em;
-    width: 35em;
+    height: 15em;
+    width: 15em;
   }
   
   #profilePhoto {
-    height: 35em; 
-    width: 35em;
+    height: 15em; 
+    width: 15em;
+    margin-left: 2em;
   }
   
   .bio-info {
-    margin: 1em 0 0 2em;
-    font-size: 3em;
-    width: 100%;
-  }
-  
-  .content {
-    margin: 0em;
-  }
-
-  .bio-form {
-    left: 27em;
-  }
+    margin: 1em 0 0 1em;
+    font-size: 2em;
+    width: 15em;
+  } 
 
   .gallery-nav {
-    display: none;
+    border-bottom: 5px solid #DBDBDB;
   }
-  
+
   .gallery {
     grid-template-columns: 1fr;
-    grid-gap: 2.5em 0;
-    margin-top: 24em;
+    grid-gap: 1.5em 0;
+    margin-top: 3em;
   }
 
   .photo-container {
-    height: 80em;
+    width: 100%;
+    height: 30em;
   }
 
   .item>img {
-    height: 80em;
-  }
-
-  .edit-text {
-    font-size: 1.5em;
-  }
-  
-  .delete-photoBtn {
-    margin-left: 17em;
-    font-size: 1.5em;
-  } 
-
-  #aboutPhoto {
-    font-size: 2em;
+    width: 100%;
+    height: 30em;
   }
 
   .about-photo {
-    position: relative;
-    bottom: 35em;
-    font-size: 2em;
-  }
-
-  #userPostButton {
-    font-size: 1.2em;
-    margin: 0 2em 1.3em 1.3em;
-  }
-
-  .add-photo {
-    top: 5em;
-    right: 0.5em;
-    font-size: 10em;
-    z-index: 1;
-  }
-
-  .post-options {
-    font-size: 1.2em;
-  }
-
-  #photoIcon {
-    margin-left: 2em;
-  } 
-
-  .edit-text-modal {
-    font-size: 2em;
-  }
-
-  .create-post-modal {
-    left: 3em;
-    font-size: 2em;
-  }
-
-  .bio-form {
-    /* top: 10em; */
-    left: 6em;
-    font-size: 2em;
+    font-size: 1.5em;
   }
 
   #editPhotoButton {
-    font-size: 2em;
+    font-size: 1.4em;
+    left: 1em;
+    bottom: 7em;
+  }
+
+  .bio-form {
+    top: 6em;
+    left: 0.5em;
+    font-size: 1.3em;
+  }
+
+  .create-post-modal {
+    top: 10em;
+    left: 0em;
+    animation-name: Slide-In;
+    animation-duration: 1s;
+  }
+
+  @keyframes Slide-In {
+    from {top: -300px; opacity: 0}
+    to {top: 10em; opacity: 1}
   }
 
   #message {
-    font-size: 2em;
+    font-size: 1.2em;
+    text-align: left;
+    padding-top: 2em;
+    height: 6em;
+  } 
+
+  #message>strong {
+    margin-right: 2em;
+  }
+
+  .add-photo {
+    top: 4.5em;
+    right: 0.5em;
+    font-size: 5em;
   }
 }
