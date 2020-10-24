@@ -1,7 +1,3 @@
-@media screen and (max-width: 1024px) {
-  
-}
-
 @media screen and (max-width: 425px) {
   body {
     font-size: 5em;
@@ -125,5 +121,35 @@
     top: 4.5em;
     right: 0.5em;
     font-size: 5em;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  body {
+    font-size: 4em;
+  }
+
+  .logo {
+    margin-left: 7em;
+  }
+
+  .nav-links {
+    margin-left: 6em;
+  }
+
+  .content {
+    width: 38em;
+  }
+
+  .bio-form {
+    left: 2em;
+  }
+
+  .create-post-modal {
+    font-size: 1.1em;
+  }
+
+  .edit-text-modal {
+    font-size: 1.2em;
   }
 }
