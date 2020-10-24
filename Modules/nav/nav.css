@@ -10,22 +10,28 @@ body {
   left: 0;
   right: 0;
   margin: auto;
-  height: 6em;
-  width: 25em;
+  height: 5em;
   padding: 1em;
   text-align: center;
+  color: #fff;
+  animation-name: slide;
+  animation-duration: 1s;
   background-color: #03a803;
   z-index: 1;
 }
 
+@keyframes slide {
+  from {top: -300px; opacity: 0}
+  to {top: 0; opacity: 1}
+}
+
 #message>strong {
   font-size: 1.2em;
-  display: block;
+  margin-right: 2em;
 }
 
 .message-btn {
   width: 4em;
-  margin: 0.5em 0 0 15em;
   height: 2em;
 }
 

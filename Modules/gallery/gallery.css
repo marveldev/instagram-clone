@@ -137,6 +137,13 @@
   z-index: 1;
   background-color: #fff;
   border-radius: 0.5em;
+  animation-name: fade;
+  animation-duration: 1s;
+}
+
+@keyframes fade {
+  from {top: -300px; opacity: 0}
+  to {top: 7em; opacity: 1}
 }
 
 #createPost {
