@@ -72,6 +72,7 @@ const addGalleryEventListeners = () => {
       </div>
     `
     galleryItem += gallerySection.innerHTML
+
     gallerySection.innerHTML = galleryItem;
 
     togglePhotoContent();
@@ -93,9 +94,9 @@ const togglePhotoContent = () => {
   const photoContents = document.querySelectorAll('.photo-container');
   for (let index = 0; index < photoContents.length; index++) {
     const singleItem = photoContents[index];
-    singleItem.addEventListener('click', () => {
+    singleItem.addEventListener('click', (event) => {
       event.preventDefault();
-     singleItem.lastElementChild.style.display = 'block'
+      singleItem.lastElementChild.style.display = 'block'
     })
     singleItem.addEventListener('mouseleave', () => {
       singleItem.lastElementChild.style.display = 'none'

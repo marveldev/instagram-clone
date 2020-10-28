@@ -6,7 +6,7 @@
   }
 
   .logo {
-    margin-left: 5em;
+    margin-left: 7em;
   }
 
   .logo>img {
@@ -21,9 +21,9 @@
     margin-left: 5em;
   }
 
-   .nav-links i {
+  .nav-links i {
     transform: scale(2);
-    margin: 0 1em;
+    margin: 0 0.5em;
   }
 
   .nav {
@@ -37,29 +37,28 @@
   }
 
   .profile {
-    margin-top: 2em;
-    margin-left: 0;
+    grid-template-columns: 0.5fr 1fr;
+    margin: 2em 0 0 1em;
   }
 
   .profile-photo>img {
-    height: 15em;
-    width: 15em;
+    height: 12em;
+    width: 12em;
   }
   
   #profilePhoto {
-    height: 15em; 
-    width: 15em;
-    margin-left: 1em;
+    height: 12em; 
+    width: 12em;
+    margin-left: 1.5em;
   }
   
   .bio-info {
-    margin: 1em 0 0 0;
-    font-size: 2em;
-    width: 12em;
+    margin: 2em 0 0 1em;
+    font-size: 1.2em;
   } 
 
   .bio-info>p {
-    width: 8em;
+    width: 12em;
   }
 
   .gallery-nav {
@@ -84,13 +83,18 @@
   }
 
   .about-photo {
-    font-size: 1.5em;
+    bottom: 22em;
+    font-size: 1.3em;
+  }
+
+  .delete-photoBtn {
+    margin-left: 16em;
   }
 
   #editPhotoButton {
-    font-size: 1.4em;
-    left: 1em;
-    bottom: 7em;
+    font-size: 1em;
+    left: 1.5em;
+    bottom: 7.5em;
   }
 
   .bio-form {
@@ -118,7 +122,7 @@
     height: 6em;
   } 
 
-  #message>strong {
+  #message>strong {   
     margin-right: 2em;
   }
 
@@ -150,11 +154,21 @@
     left: 2em;
   }
 
+  .delete-photoBtn {
+    margin-left: 18em;
+  }
+
   .create-post-modal {
     font-size: 1.1em;
   }
 
   .edit-text-modal {
     font-size: 1.2em;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  body {
+    font-size: 3.5em;
   }
 }
