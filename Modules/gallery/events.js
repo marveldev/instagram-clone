@@ -46,7 +46,7 @@ const addGalleryEventListeners = () => {
   userPostButton.addEventListener('click', () => {
     const gallerySection = document.querySelector('.gallery');
     const photoText = document.querySelector('#userPostInput').value;
-    const itemId = 'id' + Math.random().toString(36).substring(7);
+    const itemId = Date.parse(new Date()).toString();
     const modalId = 'id' + Math.random().toString(36).substring(7);
 
     let galleryItem = `
