@@ -14,7 +14,7 @@ const addGalleryEventListeners = () => {
   addPhotoIcon.addEventListener('click', () => {
     toggleUserPostModal('block');
   })
-    
+
   galleryPostButton.addEventListener('click', () => {
     toggleUserPostModal('none');
   })
@@ -46,7 +46,7 @@ const addGalleryEventListeners = () => {
   userPostButton.addEventListener('click', () => {
     const gallerySection = document.querySelector('.gallery');
     const photoText = document.querySelector('#userPostInput').value;
-    const itemId = Date.parse(new Date()).toString();
+    const itemId = 'id' + Date.parse(new Date()).toString();
     const modalId = 'id' + Math.random().toString(36).substring(7);
 
     let galleryItem = `
@@ -67,7 +67,7 @@ const addGalleryEventListeners = () => {
             <textarea id="editPostInput" placeholder="Image Description..."></textarea>
             <button class="confirm-edit button" title=${itemId}>OK</button>
             <button class="cancel-edit button">CANCEL</button>
-          </div> 
+          </div>
         </div>
       </div>
     `
@@ -84,7 +84,7 @@ const addGalleryEventListeners = () => {
       modalId: modalId,
       photoSource: userPhoto.src,
       photoText: photoText
-    } 
+    }
 
     addEntryToDb('gallery', addItemToIndexDb);
   })
@@ -183,7 +183,7 @@ const addImagesToGallery = async () => {
             <textarea id="editPostInput" placeholder="Image Description..."></textarea>
             <button class="confirm-edit button" title=${singlePhoto.galleryId}>OK</button>
             <button class="cancel-edit button">CANCEL</button>
-          </div> 
+          </div>
         </div>
       </div>
     `
