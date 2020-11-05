@@ -18,9 +18,9 @@ const addBioPhotoEventListeners = () => {
     const photoReader = new FileReader();
     photoReader.readAsDataURL(photoInput.files[0])
     photoReader.addEventListener('load', () => {
+      userPhoto.src = photoReader.result;
       clearAllEntries('bioPhoto');
       addEntryToDb('bioPhoto', photoReader.result)
-      userPhoto.src = photoReader.result;
     })
   })
 }
@@ -36,7 +36,7 @@ const addBioEventListeners = () => {
 
   bioButton.addEventListener('click', openEditBioModal);
 
-  bioForm.addEventListener('submit', () => {
+  bioForm.addEventListener('submit', (event) => {
     event.preventDefault();
     const bioNameOutput = document.querySelector('.bio-name');
     const bioDescriptionOutput = document.querySelector('.bio-about');
