@@ -257,3 +257,9 @@
 .gallery-nav {
   border-bottom: 1px solid #DBDBDB;
 }
+
+.gallery-info {
+  display: none;
+  font-size: 1.8em;
+  text-align: center;
+}
