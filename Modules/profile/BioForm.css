@@ -126,3 +126,8 @@
 .profile button:active {
   transform: translateY(3px);
 }
+
+#bio-update {
+  /* display: none; */
+  font-size: 1.2em;
+}
