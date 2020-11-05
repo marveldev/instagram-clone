@@ -36,7 +36,7 @@ const addGalleryItemsToDb = () => {
             <textarea id="editPostInput" placeholder="Image Description..."></textarea>
             <button class="confirm-edit button" title=${itemId}>OK</button>
             <button class="cancel-edit button">CANCEL</button>
-          </div> 
+          </div>
         </div>
       </div>
     `
@@ -54,7 +54,7 @@ const addGalleryItemsToDb = () => {
       modalId: modalId,
       photoSource: userPhoto.src,
       photoText: photoText
-    } 
+    }
 
     addEntryToDb('gallery', addItemToIndexDb);
   })
@@ -153,7 +153,7 @@ const getGalleryItemsFromDb = async () => {
             <textarea id="editPostInput" placeholder="Image Description..."></textarea>
             <button class="confirm-edit button" title=${singlePhoto.galleryId}>OK</button>
             <button class="cancel-edit button">CANCEL</button>
-          </div> 
+          </div>
         </div>
       </div>
     `
