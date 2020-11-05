@@ -1,37 +1,7 @@
 import { addEntryToDb, getEntryFromDb, deleteEntry, updateEntry  } from '../../dataStorage.js';
 
-const addGalleryEventListeners = () => {
-  const addPhotoIcon = document.querySelector('.add-photo');
-  const userPostOverlay = document.querySelector('#createPostOverlay');
-  const closePostButton = document.querySelector('#closePostButton');
-  const galleryPostButton = document.querySelector('#userPostButton');
-
-  const toggleUserPostModal = (value) => {
-    document.querySelector('.create-post-modal').style.display = value;
-    userPostOverlay.style.display = value;
-  }
-
-  addPhotoIcon.addEventListener('click', () => {
-    toggleUserPostModal('block');
-  })
-    
-  galleryPostButton.addEventListener('click', () => {
-    toggleUserPostModal('none');
-  })
-
-  userPostOverlay.addEventListener('click', () => {
-    toggleUserPostModal('none');
-    const editModals = document.querySelectorAll('.edit-text-modal')
-    for (let index = 0; index < editModals.length; index++) {
-      const editModal = editModals[index];
-      editModal.style.display = 'none';
-    }
-  })
-
-  closePostButton.addEventListener('click', () => {
-    toggleUserPostModal('none');
-  })
-
+const addGalleryItemsToDb = () => {
+  const gallerySection = document.querySelector('.gallery');
   const photoInput = document.querySelector('#addPhoto');
   const userPhoto = document.querySelector('#userPhoto');
   photoInput.addEventListener('change', () => {
@@ -44,9 +14,8 @@ const addGalleryEventListeners = () => {
 
   const userPostButton = document.querySelector('#userPostButton');
   userPostButton.addEventListener('click', () => {
-    const gallerySection = document.querySelector('.gallery');
     const photoText = document.querySelector('#userPostInput').value;
-    const itemId = 'id' + Math.random().toString(36).substring(7);
+    const itemId = 'id' + Date.parse(new Date()).toString();
     const modalId = 'id' + Math.random().toString(36).substring(7);
 
     let galleryItem = `
@@ -71,8 +40,9 @@ const addGalleryEventListeners = () => {
         </div>
       </div>
     `
-    galleryItem += gallerySection.innerHTML
+    document.querySelector('.gallery-info').style.display = 'none';
 
+    galleryItem += gallerySection.innerHTML
     gallerySection.innerHTML = galleryItem;
 
     togglePhotoContent();
@@ -93,13 +63,13 @@ const addGalleryEventListeners = () => {
 const togglePhotoContent = () => {
   const photoContents = document.querySelectorAll('.photo-container');
   for (let index = 0; index < photoContents.length; index++) {
-    const singleItem = photoContents[index];
-    singleItem.addEventListener('click', (event) => {
+    const photoContent = photoContents[index];
+    photoContent.addEventListener('click', (event) => {
       event.preventDefault();
-      singleItem.lastElementChild.style.display = 'block'
+      photoContent.lastElementChild.style.display = 'block'
     })
-    singleItem.addEventListener('mouseleave', () => {
-      singleItem.lastElementChild.style.display = 'none'
+    photoContent.addEventListener('mouseleave', () => {
+      photoContent.lastElementChild.style.display = 'none'
     })
   }
 }
@@ -161,7 +131,7 @@ const deleteItem = () => {
   }
 }
 
-const addImagesToGallery = async () => {
+const getGalleryItemsFromDb = async () => {
   const gallerySection = document.querySelector('.gallery');
   const galleryData = await getEntryFromDb('gallery');
   const galleryItems = galleryData.reverse().map((singlePhoto) => {
@@ -188,11 +158,19 @@ const addImagesToGallery = async () => {
       </div>
     `
   })
+
+  if (galleryData.length == 0) {
+    document.querySelector('.gallery-info').style.display = 'block';
+  } else {
+    document.querySelector('.gallery-info').style.display = 'none';
+  }
+
   gallerySection.style.display = 'grid';
   gallerySection.innerHTML = galleryItems.join('');
+
   togglePhotoContent();
   editItemText();
   deleteItem();
 }
 
-export { addGalleryEventListeners, addImagesToGallery };
+export { addGalleryItemsToDb, getGalleryItemsFromDb };
