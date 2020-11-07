@@ -159,14 +159,10 @@ const getGalleryItemsFromDb = async () => {
     `
   })
 
-  if (galleryData.length == 0) {
-    document.querySelector('.gallery-info').style.display = 'block';
-  } else {
-    document.querySelector('.gallery-info').style.display = 'none';
-  }
+  const galleryMessage = `<p class="gallery-info">You've not added any photo yet</p>`;
 
   gallerySection.style.display = 'grid';
-  gallerySection.innerHTML = galleryItems.join('');
+  gallerySection.innerHTML = galleryData.length == 0 ? galleryMessage : galleryItems.join('');
 
   togglePhotoContent();
   editItemText();
