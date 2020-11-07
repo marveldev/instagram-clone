@@ -131,6 +131,11 @@
     right: 0.5em;
     font-size: 5em;
   }
+
+  .gallery-info {
+    position: relative;
+    text-align: center;
+  }
 }
 
 @media screen and (max-width: 375px) {
