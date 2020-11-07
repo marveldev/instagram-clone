@@ -50,6 +50,7 @@ const addBioEventListeners = () => {
     bioDescriptionOutput.innerText = bioDescription;
     
     bioForm.style.display = 'none';
+    document.querySelector('#bio-update').style.display = 'none';
   })
 
   const closeEditBioModal = () => {

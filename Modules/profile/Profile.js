@@ -4,6 +4,7 @@ import { getEntryFromDb } from '../../dataStorage.js';
 const profile = async () => {
   const userInfo = await getEntryFromDb('bio');
   const userPhoto = await getEntryFromDb('bioPhoto');
+  
   return `
     <section class="profile">
       <section id="profilePhoto">
@@ -17,13 +18,13 @@ const profile = async () => {
         </label>
       </section>
       <div class="bio-info">
-        <p class="bio-name">${userInfo[0] ? userInfo[0].bioName : ''}</p>
+        <p class="bio-name">${userInfo[0] ? userInfo[0].bioName : 'Click here to update your bio'}</p>
         <p class="bio-about">${userInfo[0] ? userInfo[0].bioDescription: ''}</p>
-        <p id="bio-update">Please Update Your Bio</p>
         <button class="bio-button">EDIT BIO</button>
       </div>
       ${bioForm()}
     </section>
   `
+  
 }
 export default profile;
