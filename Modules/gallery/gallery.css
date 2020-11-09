@@ -241,7 +241,7 @@
 #previewEntry::-webkit-scrollbar-track {
   background: #fff;
 }
- 
+
 #previewEntry::-webkit-scrollbar-thumb {
   background: #BCC0C4; 
   border-radius: 0.5em;
@@ -265,3 +265,34 @@
   font-size: 1.8em;
   text-align: center;
 }
+
+.delete-modal {
+  display: none;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 15em;
+  margin: auto;
+  width: 25%;
+  padding: 1em 2em;
+  height: 15em;
+  border-radius: 0.8em;
+  text-align: center;
+  background-color: #fff;
+  z-index: 1;
+}
+
+.delete-modal button {
+  margin: 1em 0.5em;
+  width: 8em;
+  height: 2.5em;
+  border: unset;
+  border-radius: 1.5em;
+  font-weight: 700;
+}
+
+.confirm-button {
+  color: #fff;
+  background-color: #e0245e;
+}
+
