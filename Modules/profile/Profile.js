@@ -4,12 +4,11 @@ import { getEntryFromDb } from '../../dataStorage.js';
 const profile = async () => {
   const userInfo = await getEntryFromDb('bio');
   const userPhoto = await getEntryFromDb('bioPhoto');
-  
   return `
     <section class="profile">
       <section id="profilePhoto">
         <a href="#" class="profile-photo">
-          <img src=${userPhoto[0] ? userPhoto :'https://images.pexels.com/photos/1597017/pexels-photo-1597017.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'}
+          <img src=${userPhoto[0] ? userPhoto :'https://history.ucr.edu/sites/g/files/rcwecm1916/files/styles/form_preview/public/blank-profile-picture-png.png?itok=MQ-iPuNG'}
           id="photo" alt="photo">
         </a>
         <input type="file" id="editBioPhoto">
@@ -25,6 +24,5 @@ const profile = async () => {
       ${bioForm()}
     </section>
   `
-  
 }
 export default profile;
