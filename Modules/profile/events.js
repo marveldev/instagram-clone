@@ -29,7 +29,7 @@ const addBioEventListeners = () => {
   const bioForm = document.querySelector('.bio-form');
   const bioButton = document.querySelector('.bio-button');
   const cancelButton = document.querySelector('.cancel-button');
-  
+
   const openEditBioModal = () => {
     bioForm.style.display = 'block';
   }
