@@ -29,6 +29,12 @@ const modalEventListeners = () => {
       const editModal = editModals[index];
       editModal.style.display = 'none';
     }
+
+    const deleteModals = document.querySelectorAll('.delete-modal')
+    for (let index = 0; index < deleteModals.length; index++) {
+      const deleteModal = deleteModals[index];
+      deleteModal.style.display = 'none';
+    }
     toggleUserPostModal('none');
   })
 
