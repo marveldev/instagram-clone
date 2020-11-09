@@ -1,5 +1,9 @@
 const Nav = () => `
   <nav class="nav">
+    <div id="message">
+      <strong>ENTRY ADDED SUCCESSFULLY</strong>
+      <button class="message-btn button">OK</button>
+    </div>
     <span class="logo">
       <img src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png" alt="logo">
     </span>
@@ -11,9 +15,5 @@ const Nav = () => `
       <a href="#"><i class='far fa-heart'></i></a>
     </span>
   </nav>
-  <div id="message">
-    <strong>ENTRY ADDED SUCCESSFULLY</strong>
-    <button class="message-btn button">OK</button>
-  </div>
 `
 export default Nav;
