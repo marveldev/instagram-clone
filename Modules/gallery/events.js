@@ -19,7 +19,7 @@ const addGalleryItemsToDb = () => {
     const modalId = 'id' + Math.random().toString(36).substring(7);
 
     let galleryItem = `
-      <div id=${itemId}>
+      <div class=${modalId}>
         <div class="photo-container">
           <a href="#" class="item">
             <img src="${userPhoto.src}" alt="photo">
@@ -38,6 +38,12 @@ const addGalleryItemsToDb = () => {
             <button class="cancel-edit button">CANCEL</button>
           </div>
         </div>
+        <div class="delete-modal" id=${itemId}>
+          <h3>Delete Tweet?</h3>
+          <p>This can't be undone and it will be removed from your gallery.</p>
+          <button class="cancel-button">Cancel</button>
+          <button class="confirm-button" title="${modalId}">Delete</button>
+        </div>
       </div>
     `
     document.querySelector('.gallery-info').style.display = 'none';
@@ -47,7 +53,7 @@ const addGalleryItemsToDb = () => {
 
     togglePhotoContent();
     editItemText();
-    deleteItem();
+    deleteItemText();
 
     const addItemToIndexDb = {
       galleryId: itemId,
@@ -116,17 +122,43 @@ const editItemText = () => {
   }
 }
 
-const deleteItem = () => {
-  const deleteButtons = document.querySelectorAll('.delete-photoBtn')
+const deleteItemText = () => {
+  const deleteButtons = document.querySelectorAll('.delete-photoBtn');
+  const userPostOverlay = document.querySelector('#createPostOverlay');
   const gallerySection = document.querySelector('.gallery');
+
   for (let index = 0; index < deleteButtons.length; index++) {
     const deleteButton = deleteButtons[index];
     deleteButton.addEventListener('click', () => {
-      const galleryId = deleteButton.title;
-      const galleryItem = document.querySelector(`#${galleryId}`);
-      gallerySection.removeChild(galleryItem);
+      const element = deleteButton.title;
+      const deleteModal = document.querySelector(`#${element}`);
+      deleteModal.style.display = 'block';
+      userPostOverlay.style.display = 'block';
+    })
+  }
 
-      deleteEntry('gallery', galleryId);
+  const cancelButtons = document.querySelectorAll('.cancel-button')
+  for (let index = 0; index < cancelButtons.length; index++) {
+    const cancelButton = cancelButtons[index];
+    cancelButton.addEventListener('click', () => {
+      const deleteModal = cancelButton.parentElement;
+      deleteModal.style.display = 'none';
+      userPostOverlay.style.display = 'none';
+    })
+  }
+
+  const modalDeleteButtons = document.querySelectorAll('.confirm-button')
+  for (let index = 0; index < modalDeleteButtons.length; index++) {
+    const modalDeleteButton = modalDeleteButtons[index];
+    modalDeleteButton.addEventListener('click', () => {
+      const element = modalDeleteButton.title;
+      const galleryItem = document.querySelector(`.${element}`);
+      const deleteModal = modalDeleteButton.parentElement;
+      gallerySection.removeChild(galleryItem);
+      const entryKey = deleteModal.id;
+      deleteModal.style.display = 'none';
+      userPostOverlay.style.display = 'none';
+      deleteEntry('gallery', entryKey);
     })
   }
 }
@@ -136,7 +168,7 @@ const getGalleryItemsFromDb = async () => {
   const galleryData = await getEntryFromDb('gallery');
   const galleryItems = galleryData.reverse().map((singlePhoto) => {
     return `
-      <div id=${singlePhoto.galleryId}>
+    <div class=${singlePhoto.modalId}>
         <div class="photo-container">
           <a href="#" class="item">
             <img src="${singlePhoto.photoSource}" alt="photo">
@@ -155,6 +187,12 @@ const getGalleryItemsFromDb = async () => {
             <button class="cancel-edit button">CANCEL</button>
           </div>
         </div>
+        <div class="delete-modal" id=${singlePhoto.galleryId}>
+          <h3>Delete Tweet?</h3>
+          <p>This can't be undone and it will be removed from your gallery.</p>
+          <button class="cancel-button">Cancel</button>
+          <button class="confirm-button" title="${singlePhoto.modalId}">Delete</button>
+        </div>
       </div>
     `
   })
@@ -166,7 +204,7 @@ const getGalleryItemsFromDb = async () => {
 
   togglePhotoContent();
   editItemText();
-  deleteItem();
+  deleteItemText();
 }
 
 export { addGalleryItemsToDb, getGalleryItemsFromDb };
