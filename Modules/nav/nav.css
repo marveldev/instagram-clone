@@ -12,12 +12,13 @@ body {
   right: 0;
   margin: auto;
   height: 5em;
-  padding: 1em;
+  width: 30%;
+  padding: 1.5em 0;
+  color: #000;
   text-align: center;
-  color: #fff;
   animation-name: slide;
   animation-duration: 1s;
-  background-color: #03a803;
+  background-color: #8ED0F9;
   z-index: 1;
 }
 
@@ -32,6 +33,9 @@ body {
 }
 
 .message-btn {
+  border: unset;
+  border-radius: 1.8em;
+  font-weight: 700;
   width: 4em;
   height: 2em;
 }
