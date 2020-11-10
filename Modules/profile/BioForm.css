@@ -11,6 +11,7 @@
   height: 12em;
   width: 12em;
   border-radius: 50%;
+  border: 4px solid #DC3173;
 }
 
 #profilePhoto {
@@ -129,4 +130,43 @@
 
 #bio-update {
   font-size: 1.2em;
+}
+
+@media screen and (max-width: 425px) {
+  .profile {
+    grid-template-columns: 0.5fr 1fr;
+    margin: 2em 0 0 1em;
+  }
+
+  .profile-photo>img {
+    height: 12em;
+    width: 12em;
+  }
+
+  #profilePhoto {
+    height: 12em; 
+    width: 12em;
+    margin-left: 1.5em;
+  }
+
+  .bio-info {
+    margin: 2em 0 0 1em;
+    font-size: 1.2em;
+  } 
+
+  .bio-info>p {
+    width: 12em;
+  }
+
+  .bio-form {
+    top: 6em;
+    left: 0.5em;
+    font-size: 1.3em;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .bio-form {
+    left: 2em;
+  }
 }
